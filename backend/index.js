@@ -3,6 +3,8 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors'
+import bcryptjs from 'bcryptjs'
+import jsonwebtoken from 'jsonwebtoken';
 
 dotenv.config();
 const app = express();
