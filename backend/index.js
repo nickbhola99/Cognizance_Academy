@@ -6,6 +6,7 @@ import cors from 'cors'
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken';
 import User from './models/UserAccounts.js';
+import studyRouter from './routes/studyguide.js'
 import verifyToken from './utils/authorization.js';
 dotenv.config();
 const app = express();
@@ -18,10 +19,14 @@ try {
     console.error(error);  
 }
 
+
+
+app.use(cors());
 app.use(morgan('dev')); // logger
 app.use(express.json()); // parse data to the body
 app.use(express.urlencoded({extended: true}));
-app.use(cors());
+
+app.use('/guide', studyRouter);
 
 app.post('/signup', async (req,res) => {
     const {username, password} = req.body;
@@ -46,6 +51,15 @@ app.get('/', (req, res) => {
     res.send("welcome")
 })
 
+app.get('/users', async (req, res) => {
+    try {
+        const user = await User.find();
+        res.send(user)
+      } catch (error) {
+        console.log(error);
+      }
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);    
 })
@@ -68,8 +82,4 @@ app.post('/login', async (req, res) => {
         res.status(500).json({error: 'Server Error'})
     }
 })
-app.get('/kekypoopy', verifyToken, (req, res) => {
-    res.json({message: 'You have ENCHADED'})
-})
 
-//    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV4YW1wbGUiLCJpYXQiOjE3Mjk4ODAwMTd9.DTS_fnLdpUYmPufuGUkvvR6-_LOfWdYUiMeAPUd4O5k"

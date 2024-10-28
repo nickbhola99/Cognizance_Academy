@@ -1,11 +1,6 @@
 import mongoose from 'mongoose';
 
 export const cardSchema = new mongoose.Schema({
-    cardID: {
-        type: mongoose.ObjectId,
-        ref: 'Task',
-        required: true
-    },
     title: {
         type: String,
         required: true,
@@ -16,4 +11,5 @@ export const cardSchema = new mongoose.Schema({
     }
 })
 
-export default new mongoose.model('FlashCards', cardSchema)
+const FlashCards = new mongoose.model('FlashCards', cardSchema)
+export default FlashCards;
