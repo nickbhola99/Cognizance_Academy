@@ -19,6 +19,18 @@ router.post("/:username", verifyToken, async (req, res, nest) => {
     }
 })
 
+router.post("/:id", verifyToken, async (req, res, nest) => {
+    try{
+        console.log(req.user.username);
+        
+        const user = await User.findById(req.params.id);
+        const newguide = await StudyGuide.create({...req.body, createdBy: user.username})
+        res.send(newguide)
+    } catch(error){
+        console.log(error);
+    }
+})
+
 router.get('/', verifyToken, async (req, res, next) => {
     try {
         const studyguide = await StudyGuide.find();
