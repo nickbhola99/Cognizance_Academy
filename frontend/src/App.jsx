@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import {Routes, Route} from "react-router-dom"
-import HomePage from '../../../fullstack/frontend/src/pages/HomePage'
+import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import SearchPage from './pages/SearchPage'
 import SignUpPage from './pages/SignUpPage'
 import UserPage from './pages/UserPage'
+import StudyGuidePage from './pages/StudyGuidePage'
 import NavBar from './components/Navbar'
 import './App.css'
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/users/:username" element={<UserPage />} />
+        <Route path="/guide/:id" element={<StudyGuidePage />} />
       </Routes>
     </>
   )
