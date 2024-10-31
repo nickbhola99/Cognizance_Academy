@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from 'axios'
+import Quotes from "../components/Quotes";
 export default function SignUpPage() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -27,7 +28,7 @@ export default function SignUpPage() {
     }
     else{
       try {
-        const res = await axios.post("http://localhost:4000/signup", {username, password});
+        const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/signup`, {username, password});
         console.log(res.status);
 
         setBackendError(false);
@@ -82,6 +83,7 @@ export default function SignUpPage() {
           <input type="password" name="password" onChange={handlePassword} value={password} placeholder="Password: " />
           <button onClick={handleSubmit}>Submit</button>
         </form>
+        <Quotes />
       </main>
     );
   }

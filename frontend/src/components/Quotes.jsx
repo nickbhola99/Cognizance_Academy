@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-//Quote API prints a random quote on Education at bottom of page
+//Quote API prints a random quote on Education at bottom of pages
 export default function Quotes () {
     const [quote, setQuote] = useState("");
     const getQuote = async () => {

@@ -1,6 +1,8 @@
 import CardComponent from "./CardComponent";
 import { Link } from "react-router-dom";
 export default function Genres({ props }) {
+
+    //filters guides into genres, guides can have multiple genres and will appear in them
   const filterCardsIntoGenres = (genre) => {
     console.log(props);
     console.log(genre);
@@ -10,6 +12,7 @@ export default function Genres({ props }) {
       return guide.topic.includes(genre);
     });
   };
+
   return (
     <div className="genres">
       <div className="literature">

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from 'axios'
 import {useNavigate} from "react-router-dom"
+import Quotes from "../components/Quotes";
+//log in page with JWT verification
 export default function LoginPage() {
     const navigate = useNavigate();
     const [username, setUsername] = useState("")
@@ -10,9 +12,7 @@ export default function LoginPage() {
     const [backendmessage, setBackendMessage] = useState("");
     const handleUserName = (e) => {
         setUsername(e.target.value);
-
       }
-    
     const handlePassword = (e) => {
         setPassword(e.target.value);
 
@@ -27,10 +27,10 @@ export default function LoginPage() {
           }
           else{
             try {
-              const res = await axios.post("http://localhost:4000/login", {username, password});
+              const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/login`, {username, password});
               console.log(res.status);
                 const {token} = res.data;
-                localStorage.setItem('token', token);
+                localStorage.setItem('token', token); //local storage
                 console.log('Login Successful, Token: ' + token);
                 navigate(`/users/${username}`);
             } catch (error) {
@@ -68,6 +68,7 @@ export default function LoginPage() {
           <button onClick={handleSubmit}>Submit</button>
         </form>
         </div>
+        <Quotes />
       </main>
     );
   }

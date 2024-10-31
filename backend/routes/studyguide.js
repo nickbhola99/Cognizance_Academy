@@ -7,13 +7,23 @@ import verifyToken from '../utils/authorization.js'
 
 const router = new express.Router()
 
-router.post("/:username", verifyToken, async (req, res, nest) => {
+router.post("/byusername/:username", verifyToken, async (req, res, next) => {
     try{
-        console.log(req.user.username);
-        
+        console.log(req.body);
+        const {title, description, topics} = req.body;
         const user = await User.find({username: req.user.username})
-        const newguide = await StudyGuide.create({...req.body, createdBy: req.user.username})
-        res.send(newguide)
+        // const newguide = await StudyGuide.create({...req.body, createdBy: req.user.username})
+        const newGuide = new StudyGuide({
+            title,
+            description,
+            topic: topics,
+            createdBy: req.user.username
+        })
+        await newGuide.save();
+
+        console.log(newGuide);
+        
+        res.send(newGuide)
     } catch(error){
         console.log(error);
     }
@@ -71,7 +81,7 @@ router.get("/byid/:id/cards", async (req, res, next) => {
         if (flashcard){
             studyguide.cards.push(flashcard);
             await studyguide.save();
-            res.status(201).json({project});
+            res.status(201).json({studyguide});
         }
         else {
             res.status(400).json({message: "Failed to add new flashcard"});
@@ -118,6 +128,11 @@ router.get('/byid/:id/:cardid', verifyToken, async (req, res, next) => {
 router.delete('/byid/:id/:cardid', verifyToken, async (req, res, next) => {
     try {
         const deletedCard = await FlashCards.findByIdAndDelete(req.params.cardid);
+        const studyguide = await StudyGuide.findById(req.params.id);
+        if (studyguide) {
+            studyguide.cards.pull(req.params.cardid);
+            await studyguide.save();
+        }
         res.send({
             deleted: deletedCard,
             message: 'Flash Card has been deleted.'
@@ -131,11 +146,43 @@ router.delete('/byid/:id/:cardid', verifyToken, async (req, res, next) => {
 router.put('/byid/:id/:cardid', verifyToken, async (req, res, next) => {
     try {
         const id = req.params.cardid;
-        const update = req.body;
-        const updatedCard = await FlashCards.findByIdAndUpdate(id, update, {
-            new: true,
+        console.log(req.body);
+        console.log(id);
+        const newcard= await FlashCards.findByIdAndUpdate(
+            id,
+            req.body,
+            { new: true } 
+          );
+                res.send({
+            newcard,
+            message: `Flash Card ${id} Updated `
         })
-        res.send(updatedCard);
+        // const {title, backInfo} = req.body;
+        // console.log(title);
+        
+        // const flashcard = await FlashCards.findById(req.params.cardid);
+        // console.log(flashcard);
+        
+        // if (!flashcard) {
+            
+        //     return res.status(404).send({ message: 'Flashcard not found' });
+        // }
+        
+        // if (title !== undefined && title.trim() !== ''){
+        //     flashcard.title = title;
+        // }
+        // if (backInfo !== undefined && backInfo.trim() !== ''){
+        //     flashcard.backInfo = backInfo;
+        // }
+        // const newcard = await flashcard.save();
+        // res.send({
+        //     newcard,
+        //     message: `Flash Card ${id} Updated `
+        // })
+        // const updatedCard = await FlashCards.findByIdAndUpdate(id, update, {
+        //     new: true,
+        // })
+
       } catch (error) {
         console.log(error);
         next(error);

@@ -1,0 +1,31 @@
+.carousel{
+    width: 1000px;
+    margin: auto;
+
+}
+
+.flipcard{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.flipcard p{
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for controls */
+    border-radius: 50%; /* Round the buttons */
+    height: 40px; /* Set height */
+    width: 40px; /* Set width */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: white; /* Set icon color */
+
+}

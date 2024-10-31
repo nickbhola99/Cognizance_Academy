@@ -1,0 +1,11 @@
+nav{
+    background-color: gold;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 60px;
+}
+span{
+    margin-left: 20px;
+    justify-content: center;
+    font-size:x-large;
+}
