@@ -15,7 +15,7 @@ export default function Genres({ props }) {
 
   return (
     <div className="genres">
-      <div className="literature" style={{'backgroundColor': "beige", 'margin-bottom': '40px', 'padding-bottom': '40px'}}>
+      <div className="literature" style={{'backgroundColor': "beige", 'margin-bottom': '40px', 'padding-bottom': '40px', 'margin-top': '40px', 'padding-top': '20px'}}>
         <h2>Literature</h2>
         {filterCardsIntoGenres("Literature").map((guide) => (
           <div>
@@ -25,7 +25,7 @@ export default function Genres({ props }) {
           </div>
         ))}
       </div>
-      <div className="math" style={{'backgroundColor': "lightblue", 'margin-bottom': '40px', 'padding-bottom': '40px'}}>
+      <div className="math" style={{'backgroundColor': "lightblue", 'margin-bottom': '40px', 'padding-bottom': '40px', 'padding-top': '20px'}}>
         <h2>Math</h2>
         {filterCardsIntoGenres("Math").map((guide) => (
           <div>
@@ -35,7 +35,7 @@ export default function Genres({ props }) {
           </div>
         ))}
       </div>
-      <div className="science" style={{'backgroundColor': "lightgreen", 'margin-bottom': '40px', 'padding-bottom': '40px'}}>
+      <div className="science" style={{'backgroundColor': "lightgreen", 'margin-bottom': '40px', 'padding-bottom': '40px', 'padding-top': '20px'}}>
         <h2>Science</h2>
         {filterCardsIntoGenres("Science").map((guide) => (
           <div>
@@ -45,7 +45,7 @@ export default function Genres({ props }) {
           </div>
         ))}
       </div>
-      <div className="computerscience" style={{'backgroundColor': "lightgrey", 'margin-bottom': '40px', 'padding-bottom': '40px'}}>
+      <div className="computerscience" style={{'backgroundColor': "lightgrey", 'margin-bottom': '40px', 'padding-bottom': '40px', 'padding-top': '20px'}}>
         <h2>Computer Science</h2>
         {filterCardsIntoGenres("Computer Science").map((guide) => (
           <div>
@@ -55,7 +55,7 @@ export default function Genres({ props }) {
           </div>
         ))}
       </div>
-      <div className="sports" style={{'backgroundColor': "royalblue", 'margin-bottom': '40px', 'padding-bottom': '40px'}}>
+      <div className="sports" style={{'backgroundColor': "royalblue", 'margin-bottom': '40px', 'padding-bottom': '40px', 'padding-top': '20px'}}>
         <h2>Sports</h2>
         {filterCardsIntoGenres("Sports").map((guide) => (
           <div>
@@ -65,7 +65,7 @@ export default function Genres({ props }) {
           </div>
         ))}
       </div>
-      <div className="worldhistory" style={{'backgroundColor': "rebeccapurple", 'margin-bottom': '40px', 'padding-bottom': '40px'}}>
+      <div className="worldhistory" style={{'backgroundColor': "rebeccapurple", 'margin-bottom': '40px', 'padding-bottom': '40px', 'padding-top': '20px'}}>
         <h2>World History</h2>
         {filterCardsIntoGenres("World History").map((guide) => (
           <div>
