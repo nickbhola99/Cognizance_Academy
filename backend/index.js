@@ -37,11 +37,11 @@ app.post("/signup", async (req, res) => {
     const hashedPassword = await bcryptjs.hash(password, 10);
     const newUser = new User({ username, password: hashedPassword });
     await newUser.save();
-    return res.status(201).json({ message: "It worked" });
+    return res.status(201).json({ message: "Success!" });
   } catch (error) {
     console.log(error);
 
-    return res.status(500).json({ message: "big fail" });
+    return res.status(500).json({ message: "Catastrophic Failure" });
   }
 });
 
