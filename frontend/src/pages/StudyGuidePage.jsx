@@ -4,6 +4,7 @@ import CardComponent from "../components/CardComponent";
 import { Carousel } from "react-bootstrap";
 import { FlashCard } from "../components/FlashCardComponent";
 import "../components/Carousel.css";
+import "../pages/StudyGuidePage.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
