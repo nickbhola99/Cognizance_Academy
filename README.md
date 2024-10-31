@@ -13,5 +13,7 @@ Built with Node, Express, and MongoDB to store user accounts, Study Guides, and 
 - JSON Web Tokens (JWT)
 - CRUD
 - Axios
+## Deploys
+- https://cognizance-academy.netlify.app/
 ## Credits
 - https://www.api-ninjas.com/api/quotes
