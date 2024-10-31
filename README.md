@@ -17,3 +17,4 @@ Built with Node, Express, and MongoDB to store user accounts, Study Guides, and 
 - https://cognizance-academy.netlify.app/
 ## Credits
 - https://www.api-ninjas.com/api/quotes
+- https://medium.com/@ravipatel.it/building-a-secure-user-registration-and-login-api-with-express-js-mongodb-and-jwt-10b6f8f3741d
