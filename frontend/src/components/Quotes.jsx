@@ -29,7 +29,7 @@ export default function Quotes() {
 
   const loaded = () => {
     return (
-      <div>
+      <div className="quotes" style={{'color': 'white', 'font-size':'larger', 'margin-top':'50px'}}>
         {quote.map((q) => (
           <>
             {q.quote} - {q.author}
